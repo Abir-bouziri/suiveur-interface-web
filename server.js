@@ -1,0 +1,33 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const mysql = require('mysql2');
+const test= require('./test1');
+const router=require('./crud.js');
+const a = require('./affiche.js');
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+//app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('C:/Users/bouzi/Documents/maker/public'));
+app.use(express.static('C:/Users/bouzi/Documents/maker/test crud'));
+app.use(express.static('C:/Users/bouzi/Documents/maker/photo'));
+app.get('/css', function(req, res) {
+    res.sendFile('C:/Users/bouzi/Documents/maker/public/css.css');  
+  }); 
+
+app.get('/test', function(req, res) {
+    res.sendFile("C:/Users/bouzi/Documents/maker/public/html.html");
+  });
+
+  app.get('/crud', function(req, res) {
+    res.sendFile("C:/Users/bouzi/Documents/maker/test crud/test2.html");
+  });
+ app.post('/ajout',router.ajout);
+app.post('/update',router.update);
+app.get('/affiche',function(req, res) {
+  res.sendFile("C:/Users/bouzi/Documents/maker/photo/html.html");
+});
+const server =app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
