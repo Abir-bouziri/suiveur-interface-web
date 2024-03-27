@@ -34,4 +34,16 @@ const update=(req, res) => {
      }  }
      );
 }
-module.exports={ajout,update}
+const state=(req, res) => {
+    // Perform SQL query to fetch data
+    db.query('SELECT * FROM test.makerlabs INNER JOIN test.robots ON test.makerlabs.id = test.robots.idrobots where test.makerlabs.id=1', (err, results) => {
+      if (err) {
+        console.error('Error executing SQL query:', err);
+        res.status(500).send('Internal Server Error');
+        return;
+      }
+      console.log(results);
+      // Render EJS template and pass data
+      res.render('index', { data : results});
+  })}
+module.exports={ajout,update,state}

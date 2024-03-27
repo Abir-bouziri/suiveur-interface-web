@@ -12,9 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('C:/Users/bouzi/Documents/maker/public'));
 app.use(express.static('C:/Users/bouzi/Documents/maker/test crud'));
 app.use(express.static('C:/Users/bouzi/Documents/maker/photo'));
-app.get('/css', function(req, res) {
-    res.sendFile('C:/Users/bouzi/Documents/maker/public/css.css');  
-  }); 
+app.use(express.static('C:/Users/bouzi/Documents/maker/views'));
 
 app.get('/test', function(req, res) {
     res.sendFile("C:/Users/bouzi/Documents/maker/public/html.html");
@@ -28,6 +26,9 @@ app.post('/update',router.update);
 app.get('/affiche',function(req, res) {
   res.sendFile("C:/Users/bouzi/Documents/maker/photo/html.html");
 });
+app.get('/data',router.state);
+app.set('view engine', 'ejs');
+
 const server =app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });

@@ -96,6 +96,20 @@
         "robotuser": "basma",
         "etablisement": "fms",
         "homologation": 15643
+    },
+    {
+        "idrobots": 17,
+        "robotname": "ayoub",
+        "robotuser": "lazher",
+        "etablisement": "istic",
+        "homologation": 50
+    },
+    {
+        "idrobots": 18,
+        "robotname": "18",
+        "robotuser": "Alaa",
+        "etablisement": "Istic",
+        "homologation": 125
     }
 ]
 
@@ -163,7 +177,7 @@ function afficherPagination() {
   const nombrePages = Math.ceil(joueurs.length / joueursParPage);
   for (let i = 1; i <= nombrePages; i++) {
     const btnPage = document.createElement('button');
-    btnPage.innerText = i;
+    btnPage.innerText = "session "+ i;
     btnPage.addEventListener('click', () => {
       pageActuelle = i;
       afficherJoueurs(pageActuelle);

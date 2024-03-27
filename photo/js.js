@@ -63,7 +63,7 @@ function afficherPagination() {
   const nombrePages = Math.ceil(joueurs.length / joueursParPage);
   for (let i = 1; i <= nombrePages; i++) {
     const btnPage = document.createElement('button');
-    btnPage.innerText = i;
+    btnPage.innerText = "session "+ i;
     btnPage.addEventListener('click', () => {
       pageActuelle = i;
       afficherJoueurs(pageActuelle);
